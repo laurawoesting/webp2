@@ -1,0 +1,27 @@
+{
+  "name": "crudServer",
+  "version": "1.0.0",
+  "description": "A simple CRUD server managing users",
+  "main": "src/server.ts",
+  "scripts": {
+    "test": "mocha --timeout 2000 --exit",
+    "start": "node src/server.js",
+    "apidoc": "apidoc -i src/ -o apidoc"
+  },
+  "author": "David Donges, Lukas Kimpel",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.1.6",
+    "@types/express": "^4.16.0",
+    "@types/mocha": "^5.2.5",
+    "apidoc": "^0.17.6",
+    "chai": "^4.2.0",
+    "chai-http": "^4.2.0",
+    "mocha": "^5.2.0",
+    "ts-node": "^7.0.1",
+    "typescript": "^3.1.3"
+  }
+}

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Title</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Link stylesheets -->
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
+
+    <!-- Link own stylesheets -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Usermanager</a>
+            <button class="navbar-toggler" type="button" data-bs-bs-toggle="collapse"
+                    data-bs-target="#navbar-supported-content"
+                    aria-controls="navbar-supported-content" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbar-supported-content">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<main role="main">
+
+    <!-- Messages window -->
+    <div class="container">
+        <div class="row pt-3">
+            <div class="col" id="messages">
+                <!-- Messages from the script will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Content area -->
+    <div class="container" id="content">
+
+        <!-- add user form -->
+        <div class="row">
+            <h2>Add User</h2>
+            <div class="col">
+                <form id="add-user-form">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="add-user-first-name">First name</span>
+                        <input type="text" class="form-control" placeholder="First name" aria-label="First name"
+                               aria-describedby="add-user-first-name" id="add-first-name-input"><br>
+                        <span class="input-group-text" id="add-user-last-name">Last name</span>
+                        <input type="text" class="form-control" placeholder="Last name" aria-label="Last name"
+                               aria-describedby="add-user-last-name" id="add-last-name-input"><br>
+                        </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="add-animalname">Animal name</span>
+                        <input type="text" class="form-control" placeholder="Animal name" aria-label="Animalname"
+                               aria-describedby="add-animalname" id="add-animalname-input">
+                        <br>
+                        <span class="input-group-text" id="add-animalbirthdate">Animal Birthdate</span>
+                        <input type="text" class="form-control" placeholder=" dd/mm/yyyy" aria-label="Animlbirthdater"
+                               aria-describedby="add-anmimalbirthdate" id="add-animalbirthdate-input">
+                        <br>
+                        <span class="input-group-text" id="add-anmialgender">Animal gender</span>
+                        <input type="text" class="form-control" placeholder="Animal gender" aria-label="Animalgender"
+                               aria-describedby="add-animalgender" id="add-animalgender-input">
+                        <br>
+                    </div>
+                    <div class="input-group mb-3">
+                        <button type="submit" class="btn btn-info">Add user</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <hr>
+        <div class="container">
+            <h3>Suchfunktion</h3>
+            <div class="row">
+                <div class="col">
+                    <span>Suche</span>
+                    <input id="search" class="form-control mr-sm-2" type="search" placeholder="Suche"
+                           aria-label="Search">
+                </div>
+                <div class="col">
+                    <span>Sort</span>
+                    <select id="sort" class="form-select" aria-label="sort" aria-describedby="sort">
+                        <option value="1">A-Z: Vorname</option>
+                        <option value="2">Z-A: Vorname</option>
+                        <option value="3">A-Z: Nachname</option>
+                        <option value="4">Z-A: Nachname</option>
+                    </select>
+                </div>
+                <div class="col">
+                    <button id="myBtn" class="btn btnrund">Statistik</button>
+                    <div id="myModal" class="modal">
+                        <div class="modal-content">
+                            <span class="close">x</span>
+                            <div class="row">
+                                <div class="col">
+                                    <table class="table table-striped">
+                                        <thead class="thead">
+                                        <tr>
+                                            <th scope="col">Wie viele Nutzer haben ein Tier?</th>
+                                            <th scope="col">Wie alt ist das älteste Tier?</th>
+                                            <th scope="col">Was ist das Durchschnittsalter aller Tiere?</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody id="animal-table-body">
+                                        <tr>
+                                            <td id="animalCounter"></td>
+                                            <td id="oldestanimal"></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <!-- Userlist -->
+        <div class="row">
+            <div class="col">
+                <table class="table table-striped">
+                    <thead class="thead-light">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">First name</th>
+                        <th scope="col">Last name</th>
+                        <th scope="col">Animal name</th>
+                        <th scope="col">Animal Birthday</th>
+                        <th scope="col">Animal gender</th>
+                        <th scope="col">Aktion</th>
+                    </tr>
+                    </thead>
+                    <tbody id="user-table-body">
+                    <!-- The user list will be generated and inserted here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Edit user modal window -->
+        <div class="modal fade" id="edit-user-modal" tabindex="-1" role="dialog" aria-labelledby="edit-user-modal"
+             aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <form class="modal-content" id="edit-user-form">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="edit-user-modal-title">Edit user: </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">First and last name</span>
+                            </div>
+                            <input type="hidden" aria-hidden="true" id="edit-id-input">
+                            <input type="text" aria-label="First name" placeholder="First name" class="form-control"
+                                   id="edit-first-name-input">
+                            <input type="text" aria-label="Last name" placeholder="Last name" class="form-control"
+                                   id="edit-last-name-input">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-info">Save changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+<!-- Import javascript libraries -->
+<script type="text/javascript" src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Import own script (the compiled javascript) -->
+<script type="text/javascript" src="src/script.js"></script>
+
+</body>
+</html>

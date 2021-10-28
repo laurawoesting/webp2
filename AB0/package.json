@@ -1,0 +1,19 @@
+{
+  "name": "userman-co",
+  "version": "2.0.0",
+  "description": "Usermanager master example using AJAX, Bootstrap, Font-Awesome and JQuery",
+  "main": "",
+  "author": "Institut für Informationswissenschaften",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git@git.thm.de:webP-wbs/userman.git"
+  },
+  "dependencies": {
+    "bootstrap": "^5.0.0",
+    "font-awesome": "^4.7.0"
+  },
+  "devDependencies": {
+    "@types/bootstrap": "^5.0.13"
+  }
+}
